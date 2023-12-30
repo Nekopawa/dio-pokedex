@@ -1,4 +1,4 @@
-const maxRecords = 5;
+const maxRecords = 10;
 let limit = 3;
 let offset = 0;
 const loadMoreButton = document.getElementById("load-more-button");
@@ -73,16 +73,20 @@ async function openModal(event) {
       </picture>
     </section>
     
-    <section id="info-detail">
-      <h2 class="name">${name} #${number}</h2>
-      ${abilities
-        .map((ability) => {
-          return `<h3 class="ability">${ability.name}</h3>
-                <p class="ability-description">${ability.description}</p>`;
-        })
-        .join("")}
+    <div class="info-container">
+      <section id="info-detail">
+          <h2 class="name">${name} #${number}</h2>
+          
+          ${abilities
+            .map((ability) => {
+              return `<h3 class="ability">${ability.name}</h3>
+                    <p class="ability-description">${ability.description}</p>`;
+            })
+            .join("")}
+        </section>
+    </div>
 
-      <div class="type-icons">
+    <section id="type-detail">
       ${types
         .map((type) => {
           return `<picture class="type">
@@ -90,8 +94,7 @@ async function openModal(event) {
                   </picture>`;
         })
         .join("")}    
-      </div>
-    </section>`;
+      </section>`;
 
   modal.addEventListener("click", () => {
     modal.style.display = "none";
